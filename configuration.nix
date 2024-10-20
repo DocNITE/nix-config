@@ -53,14 +53,7 @@
     isNormalUser = true;
     description = "docnite";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [
-
-      # Terminal emulator
-      kitty
-
-      # Browser
-      firefox
-    ];
+    packages = with pkgs; [];
   };
 
   # Allow unfree packages
@@ -79,8 +72,14 @@
    # Search packages
    nix-search-cli
 
-   # Status bar
-   eww
+   # Terminal emulator
+   kitty
+
+   # Browser
+   firefox
+
+   # Status bar and widgets
+   eww waybar
 
    # Editor, better than VIM
    neovim vscode
@@ -97,7 +96,24 @@
    # Another packages
    noto-fonts-color-emoji swappy rar nh
    networkmanagerapplet material-icons wl-clipboard
-   btop unzip unrar
+   btop unzip unrar dunst ripgrep
+
+   # Hypr's
+   hyprpaper hyprpicker hypridle hyprlock hyprcursor
+
+   # Application launcher
+   rofi-wayland rofi-bluetooth rofi-emoji-wayland
+   rofi-vpn rofi-obsidian rofi-power-menu
+
+   # File manager
+   yazi
+
+   # Audio controller
+   pavucontrol
+
+   # LSP
+   vscode-langservers-extracted nixd rust-analyzer
+   lua-language-server
 
   ];
 
@@ -137,6 +153,24 @@
     enableSSHSupport = true;
   };
 
+  # Enable nix-ld for running dynamicly libraries
+  programs.nix-ld = {
+    enable = true;
+    libraries = with pkgs; [
+      alsa-lib at-spi2-atk at-spi2-core atk cairo 
+      cups curl dbus expat fontconfig freetype fuse3
+      gdk-pixbuf glib gtk3 icu libGL libappindicator-gtk3
+      libdrm libglvnd libnotify libpulseaudio libunwind
+      libusb1 libuuid libxkbcommon libxml2 mesa nspr nss 
+      openssl pango pipewire stdenv.cc.cc systemd 
+      vulkan-loader xorg.libX11 xorg.libXScrnSaver 
+      xorg.libXcomposite xorg.libXcursor xorg.libXdamage
+      xorg.libXext xorg.libXfixes xorg.libXi xorg.libXrandr
+      xorg.libXrender xorg.libXtst xorg.libxcb xorg.libxkbfile
+      xorg.libxshmfence zlib
+    ];
+  };
+
   # Virtual manager for VM
   programs.virt-manager.enable = true;
 
@@ -158,6 +192,8 @@
     layout = "us";
     variant = "";
   };
+
+  services.displayManager.ly.enable = true;
 
   # services.xserver.enable = true;
   # For AMD
