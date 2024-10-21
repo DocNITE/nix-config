@@ -73,16 +73,19 @@
    nix-search-cli
 
    # Terminal emulator
-   kitty
+   kitty starship
+
+   # Archiver
+   archiver
 
    # Browser
-   firefox
+   firefox-bin
 
    # Status bar and widgets
    eww waybar
 
    # Editor, better than VIM
-   neovim vscode
+   neovim vscode neovide
 
    # System staff
    playerctl ffmpeg pkg-config brightnessctl
@@ -96,7 +99,11 @@
    # Another packages
    noto-fonts-color-emoji swappy rar nh
    networkmanagerapplet material-icons wl-clipboard
-   btop unzip unrar dunst ripgrep
+   btop unzip unrar ripgrep killall bat tree
+   lxqt.lxqt-policykit glib
+
+   # Notifications
+   dunst libnotify
 
    # Hypr's
    hyprpaper hyprpicker hypridle hyprlock hyprcursor
@@ -113,8 +120,13 @@
 
    # LSP
    vscode-langservers-extracted nixd rust-analyzer
-   lua-language-server
+   lua-language-server hyprls
 
+   # Cursor theme 
+   bibata-cursors
+
+   # Screenshots
+   grim slurp
   ];
 
   # Install system fonts for the user.
@@ -124,6 +136,13 @@
       "0xProto"
     ]; })
   ];
+
+  # Theme QT -> GTK
+  qt = {
+    enable = true;
+    platformTheme = "gnome";
+    style = "adwaita-dark";
+  };
 
   # Enable Hyprland as WM.
   programs.hyprland = {
@@ -137,13 +156,19 @@
   };
 
   # dconf :woozy:
-  programs.dconf.enable = true;
+  programs.dconf = {
+    enable = true;
+    #settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
+  };
 
   programs.seahorse.enable = true;
   programs.fuse.userAllowOther = true;
 
   # File manager
   programs.thunar.enable = true;
+
+  # Theme shell (starship)
+  # programs.starship.enable = true;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -206,6 +231,7 @@
 
   xdg.portal = {
     enable = true;
+    wlr.enable = true;
     extraPortals = [ 
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal
@@ -264,7 +290,7 @@
     wantedBy = [ "multi-user.target" ];
     path = [ pkgs.flatpak ];
     script = ''
-      flatpak remote-add --if-not-exists flathub https://flathub/repo/flathub.flatpakrepo
+      flatpak remote-add --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
     '';
   };
 
