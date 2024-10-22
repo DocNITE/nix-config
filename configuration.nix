@@ -81,9 +81,6 @@
    # Browser
    firefox-bin
 
-   # Games
-   gzdoom
-
    # Status bar and widgets
    eww waybar
 
