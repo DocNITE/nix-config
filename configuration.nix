@@ -76,10 +76,13 @@
    kitty starship
 
    # Archiver
-   archiver
+   archiver kdePackages.ark
 
    # Browser
    firefox-bin
+
+   # Games
+   gzdoom
 
    # Status bar and widgets
    eww waybar
@@ -165,7 +168,13 @@
   programs.fuse.userAllowOther = true;
 
   # File manager
-  programs.thunar.enable = true;
+  programs.thunar = {
+    enable = true;
+    plugins = with pkgs.xfce; [ 
+      thunar-archive-plugin 
+      thunar-volman 
+    ];
+  };
 
   # Theme shell (starship)
   # programs.starship.enable = true;
@@ -218,7 +227,10 @@
     variant = "";
   };
 
+  # Login screen manager
   services.displayManager.ly.enable = true;
+
+  services.libinput.enable = true;
 
   # services.xserver.enable = true;
   # For AMD
