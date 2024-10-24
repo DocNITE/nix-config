@@ -93,6 +93,9 @@
    # Script runtime
    lua python3 
 
+   # Windows emulation
+   wineWowPackages.stable
+
    # Compilers
    gcc gnumake
 
@@ -115,6 +118,9 @@
    # File manager
    yazi
 
+   # Doc viewer
+   zathura
+
    # Audio controller
    pavucontrol
 
@@ -127,6 +133,9 @@
 
    # Screenshots
    grim slurp
+
+   # gsettings
+   gsettings-desktop-schemas 
   ];
 
   # Install system fonts for the user.
