@@ -100,7 +100,7 @@
    gcc gnumake
 
    # Another packages
-   noto-fonts-color-emoji swappy rar nh
+   noto-fonts-color-emoji rar nh
    networkmanagerapplet material-icons wl-clipboard
    btop unzip unrar ripgrep killall bat tree
    lxqt.lxqt-policykit glib
@@ -118,11 +118,20 @@
    # File manager
    yazi
 
+   # Screenshots
+   flameshot #swappy
+
    # Doc viewer
    zathura
 
    # Audio controller
    pavucontrol
+
+   # Video playback
+   vlc mpv
+
+   # Image viewer 
+   loupe #gwenview
 
    # LSP
    vscode-langservers-extracted nixd rust-analyzer
