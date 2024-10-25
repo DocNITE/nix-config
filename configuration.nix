@@ -91,7 +91,7 @@
    playerctl ffmpeg pkg-config brightnessctl
 
    # Script runtime
-   lua python3 
+   lua python3 mruby
 
    # Windows emulation
    wineWowPackages.stable
