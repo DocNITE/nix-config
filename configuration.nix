@@ -90,8 +90,8 @@
    # System staff
    playerctl ffmpeg pkg-config brightnessctl
 
-   # Script runtime
-   lua python3 mruby
+   # Script runtime / Interpreter
+   lua python3 mruby deno
 
    # Windows emulation
    wineWowPackages.stable
