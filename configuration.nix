@@ -58,6 +58,9 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  #nixpkgs.config.permittedInsecurePackages = [
+  #  "python3.12-youtube-dl-2021.12.17"
+  #];
 
   # Enable the Flakes feature and the accompanying new nix cmd tools
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -127,8 +130,8 @@
    # Audio controller
    pavucontrol
 
-   # Video playback
-   vlc mpv
+   # Video/Audio playback
+   vlc mpv 
 
    # Image viewer 
    loupe #gwenview
