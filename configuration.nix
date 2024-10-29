@@ -1,7 +1,7 @@
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
- 
+
 { config, pkgs, ... }:
 
 {
@@ -88,7 +88,7 @@
    eww waybar
 
    # Editor, better than VIM
-   neovim vscode zed-editor neovide
+   neovim zed-editor neovide
 
    # System staff
    playerctl ffmpeg pkg-config brightnessctl
@@ -131,26 +131,26 @@
    pavucontrol
 
    # Video/Audio playback
-   vlc mpv 
+   vlc mpv cmus
 
-   # Image viewer 
+   # Image viewer
    loupe #gwenview
 
    # LSP
    vscode-langservers-extracted nixd rust-analyzer
    lua-language-server hyprls
 
-   # Cursor theme 
+   # Cursor theme
    bibata-cursors
 
    # Screenshots
    grim slurp
 
-   # Polkit 
+   # Polkit
    polkit_gnome
 
    # gsettings
-   gsettings-desktop-schemas 
+   gsettings-desktop-schemas
   ];
 
   # Install system fonts for the user.
@@ -191,9 +191,9 @@
   # File manager
   programs.thunar = {
     enable = true;
-    plugins = with pkgs.xfce; [ 
-      thunar-archive-plugin 
-      thunar-volman 
+    plugins = with pkgs.xfce; [
+      thunar-archive-plugin
+      thunar-volman
     ];
   };
 
@@ -212,13 +212,13 @@
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [
-      alsa-lib at-spi2-atk at-spi2-core atk cairo 
+      alsa-lib at-spi2-atk at-spi2-core atk cairo
       cups curl dbus expat fontconfig freetype fuse3
       gdk-pixbuf glib gtk3 icu libGL libappindicator-gtk3
       libdrm libglvnd libnotify libpulseaudio libunwind
-      libusb1 libuuid libxkbcommon libxml2 mesa nspr nss 
-      openssl pango pipewire stdenv.cc.cc systemd 
-      vulkan-loader xorg.libX11 xorg.libXScrnSaver 
+      libusb1 libuuid libxkbcommon libxml2 mesa nspr nss
+      openssl pango pipewire stdenv.cc.cc systemd
+      vulkan-loader xorg.libX11 xorg.libXScrnSaver
       xorg.libXcomposite xorg.libXcursor xorg.libXdamage
       xorg.libXext xorg.libXfixes xorg.libXi xorg.libXrandr
       xorg.libXrender xorg.libXtst xorg.libxcb xorg.libxkbfile
@@ -265,11 +265,11 @@
   xdg.portal = {
     enable = true;
     wlr.enable = true;
-    extraPortals = [ 
+    extraPortals = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal
     ];
-    configPackages = [ 
+    configPackages = [
       pkgs.xdg-desktop-portal-gtk
       pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal
