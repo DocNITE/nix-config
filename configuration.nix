@@ -88,7 +88,7 @@
    eww waybar
 
    # Editor, better than VIM
-   neovim vscode neovide
+   neovim vscode zed-editor neovide
 
    # System staff
    playerctl ffmpeg pkg-config brightnessctl
