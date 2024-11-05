@@ -52,7 +52,8 @@
   users.users.docnite = {
     isNormalUser = true;
     description = "docnite";
-    extraGroups = [ "networkmanager" "wheel" ];
+    shell = pkgs.zsh;
+    extraGroups = [ "networkmanager" "wheel" "docker" ];
     packages = with pkgs; [];
   };
 
@@ -68,6 +69,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+   # Games
+   vkquake gzdoom
+
+   # GTK Theme changer 
+   themechanger
 
    # Based editor and another tools
    vim wget curl cmatrix
@@ -121,6 +127,9 @@
    # File manager
    yazi
 
+   # Set monitors
+   wdisplays
+
    # Screenshots
    flameshot #swappy
 
@@ -151,7 +160,17 @@
 
    # gsettings
    gsettings-desktop-schemas
+
+   # GTK Themes 
+   pkgs.adwaita-icon-theme
+   pkgs.gnome-themes-extra
+   gtk3 gtk4
   ];
+
+  environment.sessionVariables = {
+    POLKIT_AUTH_AGENT = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+    GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
+  };
 
   # Install system fonts for the user.
   fonts.packages = with pkgs; [
@@ -166,6 +185,14 @@
     enable = true;
     platformTheme = "gnome";
     style = "adwaita-dark";
+  };
+
+  # Enable ZSH 
+  programs.zsh = {
+    enable = true;
+    enableCompletion = true;
+    autosuggestions.enable = true;
+    syntaxHighlighting.enable = true; 
   };
 
   # Enable Hyprland as WM.
@@ -305,6 +332,7 @@
 
   services.tumbler.enable = true;
 
+  # Enable the gnome-keyring secrets vault.
   services.gnome.gnome-keyring.enable = true;
 
   # Bluetooth manager
