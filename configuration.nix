@@ -70,6 +70,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
+   # YT Music 
+   youtube-music
+
    # GTK Theme changer 
    themechanger
 
@@ -111,6 +114,9 @@
    networkmanagerapplet material-icons wl-clipboard
    btop unzip unrar ripgrep killall bat tree
    lxqt.lxqt-policykit glib
+
+   # Screen recorder
+   obs-studio wl-screenrec
 
    # Notifications
    dunst libnotify
