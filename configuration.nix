@@ -76,6 +76,9 @@
    # GTK Theme changer 
    themechanger
 
+   # Font manager 
+   font-manager
+
    # Based editor and another tools
    vim wget curl cmatrix
 
