@@ -39,4 +39,4 @@ sh tools/update.sh; sh tools/build.sh hostname_config
 
 ## With Dotfiles 
 
-You can use `flake-rebuild` and `flake-update`, instead call scripts from folders.
+You can use `flake-rebuild` and `flake-update`, instead of call scripts from folders.
