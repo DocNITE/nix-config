@@ -64,42 +64,9 @@
   # Enable the Flakes feature and the accompanying new nix cmd tools
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
   
-  # Emoji picker function
-  emopicker9000 = pkgs.writeShellScriptBin "emopicker9000" ''
-    # Get user selection via rofi from emoji file.
-    chosen=$(cat $HOME/.emoji | ${pkgs.rofi-wayland}/bin/rofi -dmenu | awk '{print $1}')
-
-    # Exit if none chosen.
-    [ -z "$chosen" ] && exit
-
-    # If you run this command with an argument, it will automatically insert the
-    # character. Otherwise, show a message that the emoji has been copied.
-    if [ -n "$1" ]; then
-	    ${pkgs.ydotool}/bin/ydotool type "$chosen"
-    else
-        printf "$chosen" | ${pkgs.wl-clipboard}/bin/wl-copy
-	    ${pkgs.libnotify}/bin/notify-send "'$chosen' copied to clipboard." &
-    fi
-  '';
-
-  # Useful funciton for yazi running
-  yazi-wrapper = pkgs.writeShellScriptBin "y" ''
-  function y() {
-	  local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	  yazi "$@" --cwd-file="$tmp"
-	  if cwd="$(command cat -- "$tmp")" && [ -n "$cwd" ] && [ "$cwd" != "$PWD" ]; then
-		  builtin cd -- "$cwd"
-	  fi
-	  rm -f -- "$tmp"
-  }
-  '';
-
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-
-   # script pkgs
-   emopicker9000 yazi-wrapper
 
    # YT Music 
    youtube-music
