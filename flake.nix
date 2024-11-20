@@ -8,11 +8,12 @@
   };
 
   outputs = { nixpkgs, ... }: {
+    # Setup for RedmiBook 14 pro
     nixosConfigurations.redmibook = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
         # Configuration of system
-        ./configuration.nix
+        ./configs/redmibook.nix
       ];
     };
   };
