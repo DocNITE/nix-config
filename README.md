@@ -13,11 +13,16 @@ Clone repository into `/home/{user}/.nix-config` directory, with:
 git clone https://github.com/DocNITE/nix-config.git ~/.nix-config
 ```
 
+
+
 You would like generate any hardware information and kernel modules before building. So, run next cmd:
 ```bash
 sh tools/generate-hardware.sh
 ```
 It will create `hardware-configuration.nix` in root folder. You **SHOULD NOT EDIT IT!!!**
+
+
+
 
 Than, if you haven't scripts from my dotfiles, you should run `tools/build.sh`. 
 ```bash 
