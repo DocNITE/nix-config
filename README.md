@@ -36,3 +36,7 @@ You should run update flake and then rebuild the config. Just run:
 ```bash 
 sh tools/update.sh; sh tools/build.sh hostname_config
 ```
+
+## With Dotfiles 
+
+You can use `flake-rebuild` and `flake-update`, instead call scripts from folders.
