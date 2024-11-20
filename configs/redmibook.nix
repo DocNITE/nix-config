@@ -68,6 +68,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
+   # Cow saying 
+   cowsay
+    
    # YT Music 
    youtube-music
 
