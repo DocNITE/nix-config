@@ -103,6 +103,7 @@
 
    # Editor, better than VIM
    neovim zed-editor neovide
+   vscode # ONLY FOR C#/Java projects with shitty LSP, because i can't run omnisharp in zed and nvim. So, it might better way to program on C# with intellisense
 
    # System staff
    playerctl ffmpeg pkg-config brightnessctl
