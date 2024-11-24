@@ -67,8 +67,8 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-  
-   # nushell
+
+   # Terminal shell
    nushell
 
    # Cow saying 
