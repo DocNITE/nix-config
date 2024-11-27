@@ -129,6 +129,9 @@
    # Notifications
    dunst libnotify
 
+   # Video wallpaper
+   mpvpaper
+
    # Hypr's
    hyprpaper hyprpicker hypridle hyprlock hyprcursor
 
