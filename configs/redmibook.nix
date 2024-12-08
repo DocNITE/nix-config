@@ -68,6 +68,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
+   zip
+
    # Terminal shell
    nushell
 
