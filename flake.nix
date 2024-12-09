@@ -16,5 +16,12 @@
         ./configs/redmibook.nix
       ];
     };
+    nixosConfigurations.pc_nvidia = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        # Configuration of system
+        ./configs/pc_nvidia.nix
+      ];
+    };
   };
 }
