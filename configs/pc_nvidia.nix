@@ -9,8 +9,10 @@
     ];
 
   # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  #boot.loader.efi.canTouchEfiVariables = true;
+  # Bootloader.
+  boot.loader.grub.enable = true;
+  boot.loader.grub.device = "/dev/sdb";
+  boot.loader.grub.useOSProber = true;
   boot.tmp.useTmpfs = true;
   boot.tmp.tmpfsSize = "25%";
 
@@ -18,7 +20,7 @@
   boot.kernelModules = [ "v4l2loopback" ];
   boot.extraModulePackages = [ config.boot.kernelPackages.v4l2loopback ];
 
-  networking.hostName = "redmibook"; # Define your hostname.
+  networking.hostName = "pc_nvidia"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Configure network proxy if necessary
