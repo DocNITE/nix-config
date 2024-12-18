@@ -68,6 +68,9 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
+   # VPN
+   shadowsocks-rust n2n
+  
    zip
 
    # Terminal shell
