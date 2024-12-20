@@ -117,7 +117,7 @@
    lua python3 mruby deno
 
    # Windows emulation
-   wineWowPackages.stable
+   wineWowPackages.stable winetricks
 
    # Compilers
    gcc gnumake
