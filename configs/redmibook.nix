@@ -70,7 +70,9 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-
+  
+   love
+  
    # VPN
    shadowsocks-rust n2n
   
@@ -170,7 +172,7 @@
 
    # LSP
    vscode-langservers-extracted nixd rust-analyzer
-   lua-language-server hyprls
+   lua-language-server hyprls python312Packages.python-lsp-server
 
    # Cursor theme
    bibata-cursors
