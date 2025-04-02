@@ -1,5 +1,10 @@
 { config, pkgs, ... }:
 
+# variables
+let 
+    # Piratez Launcher (SSMV Launcher fork)
+    PiratezLauncher = builtins.getFlake "github:DocNITE/Piratez.Launcher";
+in 
 {
   imports =
     [ 
@@ -70,6 +75,11 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+
+   PiratezLauncher.packages.${pkgs.system}.default
+   (pkgs.writeScriptBin "piratez-launcher" ''
+      ${PiratezLauncher.apps.${pkgs.system}.default.program} "$@"
+    '')
   
    love
   
