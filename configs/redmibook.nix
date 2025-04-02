@@ -113,7 +113,7 @@ in
    kitty starship
 
    # Archiver
-   archiver kdePackages.ark
+   kdePackages.ark
 
    # Browser
    firefox-bin
@@ -209,10 +209,8 @@ in
 
   # Install system fonts for the user.
   fonts.packages = with pkgs; [
-    (nerdfonts.override { fonts = [
-      "JetBrainsMono"
-      "0xProto"
-    ]; })
+    nerd-fonts.jetbrains-mono
+    nerd-fonts._0xproto
   ];
 
   # Theme QT -> GTK
@@ -391,6 +389,8 @@ in
 
   services.thermald.enable = true;
 
+  services.pulseaudio.enable = false;
+
   # GAOMON s620 tablet pen resolution fix
   services.udev.extraHwdb = ''
   evdev:input:b0003v256Cp006F*
@@ -415,8 +415,6 @@ in
   hardware.bluetooth.enable = true;
 
   hardware.bluetooth.powerOnBoot = true;
-
-  hardware.pulseaudio.enable = false;
 
   # OpenGL
   hardware.graphics = {
