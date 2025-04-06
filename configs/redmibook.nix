@@ -81,7 +81,8 @@ in
    #   ${PiratezLauncher.apps.${pkgs.system}.default.program} "$@"
    # '')
   
-   love
+   # Engines/Frameworks/Game platforms
+   love luanti
   
    # VPN
    shadowsocks-rust n2n
