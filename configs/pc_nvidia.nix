@@ -70,6 +70,8 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
 
+   luanti
+
    zip
 
    # Terminal shell
