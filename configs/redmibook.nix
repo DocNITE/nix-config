@@ -309,6 +309,15 @@ in
     variant = "";
   };
 
+  # ----------------------
+  # Plasma 6
+  services.xserver.enable = true;
+  services.desktopManager.plasma6.enable = true;
+  programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
+  #services.displayManager.sddm.wayland.enable = true;
+  #services.displayManager.defaultSession = "plasma";
+  # ----------------------
+
   # Login screen manager
   services.displayManager.ly.enable = true;
 
