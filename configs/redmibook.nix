@@ -89,6 +89,8 @@ in
   
    zip
 
+   pulsemixer
+
    # Terminal shell
    nushell
 
