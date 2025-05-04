@@ -155,13 +155,6 @@ in
    # Video wallpaper
    mpvpaper
 
-   # Hypr's
-   hyprpaper hyprpicker hypridle hyprlock hyprcursor
-
-   # Application launcher
-   rofi-wayland rofi-bluetooth rofi-emoji-wayland
-   rofi-vpn rofi-obsidian rofi-power-menu
-
    # File manager
    yazi
 
@@ -194,7 +187,7 @@ in
    grim slurp
 
    # Polkit
-   polkit_gnome
+   #polkit_gnome
 
    # gsettings
    gsettings-desktop-schemas
@@ -206,7 +199,7 @@ in
   ];
 
   environment.sessionVariables = {
-    POLKIT_AUTH_AGENT = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+    #POLKIT_AUTH_AGENT = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
     GSETTINGS_SCHEMA_DIR = "${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}/glib-2.0/schemas";
   };
 
@@ -217,11 +210,11 @@ in
   ];
 
   # Theme QT -> GTK
-  qt = {
-    enable = true;
-    platformTheme = "gnome";
-    style = "adwaita-dark";
-  };
+  #qt = {
+  #  enable = true;
+  #  platformTheme = "gnome";
+  #  style = "adwaita-dark";
+  #};
 
   # Enable ZSH 
   programs.zsh = {
@@ -232,10 +225,10 @@ in
   };
 
   # Enable Hyprland as WM.
-  programs.hyprland = {
-    enable = true;
-    xwayland.enable = true;
-  };
+  #programs.hyprland = {
+  #  enable = true;
+  #  xwayland.enable = true;
+  #};
 
   # Enable git as powerful tool.
   programs.git = {
@@ -243,10 +236,10 @@ in
   };
 
   # dconf :woozy:
-  programs.dconf = {
-    enable = true;
+  #programs.dconf = {
+  #  enable = true;
     #settings."org/gnome/desktop/interface".color-scheme = "prefer-dark";
-  };
+  #};
 
   programs.seahorse.enable = true;
   programs.fuse.userAllowOther = true;
@@ -315,13 +308,17 @@ in
   # Plasma 6
   services.xserver.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    autoNumlock = true;
+    wayland.enable = true;
+    # theme = "sugar-dark";
+  };
   programs.ssh.askPassword = pkgs.lib.mkForce "${pkgs.kdePackages.ksshaskpass.out}/bin/ksshaskpass";
-  #services.displayManager.sddm.wayland.enable = true;
-  #services.displayManager.defaultSession = "plasma";
   # ----------------------
 
   # Login screen manager
-  services.displayManager.ly.enable = true;
+  #services.displayManager.ly.enable = true;
 
   services.libinput.enable = true;
 
@@ -343,30 +340,30 @@ in
     ];
     configPackages = [
       pkgs.xdg-desktop-portal-gtk
-      pkgs.xdg-desktop-portal-hyprland
+      #pkgs.xdg-desktop-portal-hyprland
       pkgs.xdg-desktop-portal
     ];
   };
 
   # Polkit from old config
-  systemd.user.services.polkit-gnome-authentication-agent-1 = {
-    description = "polkit-gnome-authentication-agent-1";
-    wantedBy = [ "graphical-session.target" ];
-    wants = [ "graphical-session.target" ];
-    after = [ "graphical-session.target" ];
-    serviceConfig = {
-      Type = "simple";
-      ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
-      Restart = "on-failure";
-      RestartSec = 1;
-      TimeoutStopSec = 10;
-    };
-  };
+  #systemd.user.services.polkit-gnome-authentication-agent-1 = {
+  #  description = "polkit-gnome-authentication-agent-1";
+  #  wantedBy = [ "graphical-session.target" ];
+  #  wants = [ "graphical-session.target" ];
+  #  after = [ "graphical-session.target" ];
+  #  serviceConfig = {
+  #    Type = "simple";
+  #    ExecStart = "${pkgs.polkit_gnome}/libexec/polkit-gnome-authentication-agent-1";
+  #    Restart = "on-failure";
+  #    RestartSec = 1;
+  #    TimeoutStopSec = 10;
+  #  };
+  #};
 
-  services.battery-alert = {
-    enable = true;
-    threshold = 20; # Optional: Set your desired threshold
-  };
+  #services.battery-alert = {
+  #  enable = true;
+  #  threshold = 20; # Optional: Set your desired threshold
+  #};
 
   services.pipewire = {
     enable = true;
@@ -381,25 +378,25 @@ in
   services.tumbler.enable = true;
 
   # Enable the gnome-keyring secrets vault.
-  services.gnome.gnome-keyring.enable = true;
+  #services.gnome.gnome-keyring.enable = true;
 
   # Bluetooth manager
-  services.blueman.enable = true;
+  #services.blueman.enable = true;
 
   # Disable default power profiles, use TLP instead
-  services.power-profiles-daemon.enable = false;
+  #services.power-profiles-daemon.enable = false;
 
-  services.tlp = {
-    enable = true;
-    settings = {
-      CPU_BOOST_ON_AC = 1;
-      CPU_BOOTS_ON_BAT = 0;
-      CPU_SCALING_GOVERNOR_ON_AC = "performance";
-      CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
-    };
-  };
+  #services.tlp = {
+  #  enable = true;
+  #  settings = {
+  #    CPU_BOOST_ON_AC = 1;
+  #    CPU_BOOTS_ON_BAT = 0;
+  #    CPU_SCALING_GOVERNOR_ON_AC = "performance";
+  #    CPU_SCALING_GOVERNOR_ON_BAT = "powersave";
+  #  };
+  #};
 
-  services.thermald.enable = true;
+  #services.thermald.enable = true;
 
   services.pulseaudio.enable = false;
 
@@ -441,24 +438,24 @@ in
   security.rtkit.enable = true;
 
   # Enable polkit
-  security.polkit.enable = true;
+  #security.polkit.enable = true;
 
-  security.polkit.extraConfig = ''
-    polkit.addRule(function(action, subject) {
-      if (
-        subject.isInGroup("users")
-          && (
-            action.id == "org.freedesktop.login1.reboot" ||
-            action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
-            action.id == "org.freedesktop.login1.power-off" ||
-            action.id == "org.freedesktop.login1.power-off-multiple-sessions"
-          )
-        )
-      {
-        return polkit.Result.YES;
-      }
-    })
-  '';
+  #security.polkit.extraConfig = ''
+  #  polkit.addRule(function(action, subject) {
+  #    if (
+  #      subject.isInGroup("users")
+  #        && (
+  #          action.id == "org.freedesktop.login1.reboot" ||
+  #          action.id == "org.freedesktop.login1.reboot-multiple-sessions" ||
+  #          action.id == "org.freedesktop.login1.power-off" ||
+  #          action.id == "org.freedesktop.login1.power-off-multiple-sessions"
+  #        )
+  #      )
+  #    {
+  #      return polkit.Result.YES;
+  #    }
+  #  })
+  #'';
 
   # Open ports in the firewall.
   # networking.firewall.allowedTCPPorts = [ ... ];
