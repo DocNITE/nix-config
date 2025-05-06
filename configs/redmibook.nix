@@ -115,14 +115,14 @@ in
    # Terminal emulator
    kitty starship
 
-   # Archiver
+   # KDE
    kdePackages.ark
+   kdePackages.kdenlive
+   kdePackages.dragon
+   kdePackages.plasma-browser-integration
 
    # Browser
    firefox-bin
-
-   # Status bar and widgets
-   eww waybar
 
    # Editor, better than VIM
    neovim zed-editor neovide
@@ -149,17 +149,11 @@ in
    # Screen recorder
    obs-studio wl-screenrec
 
-   # Notifications
-   dunst libnotify
-
    # Video wallpaper
    mpvpaper
 
    # File manager
    yazi
-
-   # Set monitors
-   wdisplays
 
    # Screenshots
    flameshot #swappy
@@ -173,21 +167,12 @@ in
    # Video/Audio playback
    vlc mpv cmus
 
-   # Image viewer
-   loupe #gwenview
-
    # LSP
    vscode-langservers-extracted nixd rust-analyzer
    lua-language-server hyprls python312Packages.python-lsp-server
 
    # Cursor theme
    bibata-cursors
-
-   # Screenshots
-   grim slurp
-
-   # Polkit
-   #polkit_gnome
 
    # gsettings
    gsettings-desktop-schemas

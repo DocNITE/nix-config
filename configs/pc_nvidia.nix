@@ -99,7 +99,7 @@
    kitty starship
 
    # Archiver
-   kdePackages.ark
+   #kdePackages.ark
 
    # Browser
    firefox-bin
