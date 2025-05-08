@@ -167,6 +167,9 @@ in
    # Video/Audio playback
    vlc mpv cmus
 
+   # Image viewer
+   loupe
+
    # LSP
    vscode-langservers-extracted nixd rust-analyzer
    lua-language-server hyprls python312Packages.python-lsp-server
